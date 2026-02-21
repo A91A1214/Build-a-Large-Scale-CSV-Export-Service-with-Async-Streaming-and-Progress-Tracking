@@ -42,5 +42,7 @@ BEGIN
             (ARRAY['free', 'basic', 'premium', 'pro'])[floor(random() * 4 + 1)],
             round((random() * 1000)::numeric, 2)
         FROM generate_series(((i - 1) * batch_size) + 1, i * batch_size) as seq;
+        
+        RAISE NOTICE 'Seeded % rows...', i * batch_size;
     END LOOP;
 END $$;
